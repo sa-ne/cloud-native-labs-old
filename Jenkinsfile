@@ -7,7 +7,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.startBuild("inventory", "--wait")
+            openshift.startBuild("inventory", "--follow")
           }
         }
       }
