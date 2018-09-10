@@ -14,7 +14,7 @@ pipeline {
         unstash name:"jar"
         script {
           openshift.withCluster() {
-            openshift.startBuild("inventory", "--from-file=inventory-wildfly-swarm/target/inventory-1.0-SNAPSHOT-swarm.jar", "--wait")
+            openshift.startBuild("inventory", "--from-file=target/inventory-1.0-SNAPSHOT-swarm.jar", "--wait")
           }
         }
       }
