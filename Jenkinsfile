@@ -5,8 +5,7 @@ pipeline {
   stages {
     stage('Build JAR') {
       steps {
-        sh "cd inventory-wildfly-swarm"
-        sh "mvn package"
+        sh "cd inventory-wildfly-swarm && mvn package"
         stash name:"jar", includes:"target/inventory-1.0-SNAPSHOT-swarm.jar"
       }
     }
