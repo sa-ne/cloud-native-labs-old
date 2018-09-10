@@ -7,8 +7,8 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            def bc = openshift.startBuild("inventory", "--follow")
-            bc.logs(-f)
+            def bc = openshift.startBuild("inventory")
+            bc.logs('-f')
           }
         }
       }
