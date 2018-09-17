@@ -20,7 +20,7 @@ pipeline {
             def dc = openshift.selector("dc", "gateway")
             dc.rollout().latest()
             dc.rollout().status()
-            sh "oc set route-backends hello-world hello-world=90 hello-world-canary=10"
+            sh "oc set route-backends gateway gateway=90 gateway-canary=10"
           }
         }
       }
@@ -75,6 +75,7 @@ pipeline {
                     openshift.selector('dc', gateway).rollout().latest()
                     //wait for rollout. It waits until pods are running (if readiness probe is set)
                     openshift.selector('dc', gateway).rollout().status()
+                    sh "oc set route-backends gateway gateway=100 gateway-canary=0"
                 }
             }
         }
