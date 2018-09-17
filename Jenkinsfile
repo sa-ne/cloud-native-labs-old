@@ -72,9 +72,9 @@ pipeline {
                     /***
                      * Rollout
                      **/
-                    openshift.selector('dc', gateway).rollout().latest()
+                    openshift.selector('dc', 'gateway').rollout().latest()
                     //wait for rollout. It waits until pods are running (if readiness probe is set)
-                    openshift.selector('dc', gateway).rollout().status()
+                    openshift.selector('dc', 'gateway').rollout().status()
                     sh "oc set route-backends gateway gateway=100 gateway-canary=0"
                 }
             }
